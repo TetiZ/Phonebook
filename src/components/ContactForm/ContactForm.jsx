@@ -5,11 +5,11 @@ import css from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
 
-const formValidationSchema = Yup.object().shape({
+const contactFormValidationSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, "Too short!")
     .max(50, "Too long!")
-    .required("Required"),
+    .required("Required field"),
 
   number: Yup.string()
     .matches(/^[0-9]{3}-[0-9]{2}-[0-9]{2}$/, {
@@ -22,7 +22,18 @@ const formValidationSchema = Yup.object().shape({
 export default function ContactForm() {
   const userName = useId();
   const userPhoneNumber = useId();
+
   const dispatch = useDispatch();
+  const submitHandler = (values, action) => {
+    dispatch(
+      addContact({
+        id: values.id,
+        name: values.name,
+        number: values.number,
+      })
+    );
+    action.resetForm();
+  };
 
   return (
     <Formik
@@ -30,17 +41,8 @@ export default function ContactForm() {
         name: "",
         number: "",
       }}
-      validationSchema={formValidationSchema}
-      onSubmit={(values, action) => {
-        dispatch(
-          addContact({
-            id: values.id,
-            name: values.name,
-            number: values.number,
-          })
-        );
-        action.resetForm();
-      }}
+      validationSchema={contactFormValidationSchema}
+      onSubmit={submitHandler}
     >
       <Form className={css.form}>
         <div>

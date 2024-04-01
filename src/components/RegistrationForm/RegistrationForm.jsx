@@ -2,6 +2,25 @@ import { ErrorMessage, Form, Formik, Field } from "formik";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import { useId } from "react";
+import * as Yup from "yup";
+
+const userCredentialsValidationSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(3, "Too short!")
+    .max(50, "Too long!")
+    .required("Required field"),
+  email: Yup.string().email("Invalid email format").required("Required field"),
+
+  password: Yup.string()
+    .min(
+      8,
+      "password must contain 8 or more characters with at least one of each: uppercase, lowercase, number and special"
+    )
+    .matches(/[0-9]/, "password must contain at least 1 number")
+    .matches(/[a-z]/, "password must contain at least 1 lower case letter")
+    .matches(/[A-Z]/, "password must contain at least 1 upper case letter")
+    .required("Please Enter your password"),
+});
 
 export default function RegistrationForm() {
   const userName = useId();
@@ -21,6 +40,7 @@ export default function RegistrationForm() {
         email: "",
         password: "",
       }}
+      validationSchema={userCredentialsValidationSchema}
       onSubmit={registrationHandler}
     >
       <Form>

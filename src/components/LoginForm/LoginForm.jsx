@@ -2,6 +2,13 @@ import { ErrorMessage, Form, Formik, Field } from "formik";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/auth/operations";
 import { useId } from "react";
+import * as Yup from "yup";
+
+const loginValidationSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email format").required("Required field"),
+
+  password: Yup.string().required("Please Enter your password"),
+});
 
 export default function LoginForm() {
   const userEmail = useId();
@@ -12,12 +19,14 @@ export default function LoginForm() {
     dispatch(login(values));
     action.resetForm();
   };
+
   return (
     <Formik
       initialValues={{
         email: "",
         password: "",
       }}
+      validationSchema={loginValidationSchema}
       onSubmit={loginHandler}
     >
       <Form>

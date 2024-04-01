@@ -1,9 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { lazy, Suspense, useEffect } from "react";
-import {
-  selectIsLoggedIn,
-  selectIsRefreshing,
-} from "../../redux/auth/selectors";
+import { selectIsRefreshing } from "../../redux/auth/selectors";
 import { Routes, Route } from "react-router-dom";
 
 const HomePage = lazy(() => import("../../pages/Home"));
@@ -13,10 +10,11 @@ const PhonebookPage = lazy(() => import("../../pages/Phonebook"));
 
 import { refreshUser } from "../../redux/auth/operations";
 import Layout from "../Layout/Layout";
+import RestrictedRoute from "../RestrictedRoute";
+import PrivateRoute from "../PrivateRoute";
 
 export default function App() {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(selectIsLoggedIn);
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
@@ -31,9 +29,18 @@ export default function App() {
         <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/registration" element={<RegisterPage />} />
-            <Route path="/phonebook" element={<PhonebookPage />} />
+            <Route
+              path="/login"
+              element={<RestrictedRoute component={<LoginPage />} />}
+            />
+            <Route
+              path="/registration"
+              element={<RestrictedRoute component={<RegisterPage />} />}
+            />
+            <Route
+              path="/phonebook"
+              element={<PrivateRoute component={<PhonebookPage />} />}
+            />
           </Routes>
         </Suspense>
       )}
