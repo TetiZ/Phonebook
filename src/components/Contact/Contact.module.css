@@ -13,3 +13,10 @@
   margin-top: 8px;
   margin-bottom: 8px;
 }
+
+.btnWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 8px;
+}

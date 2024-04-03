@@ -41,12 +41,14 @@ export default function Contact({ contact: { id, name, number } }) {
           {number}
         </p>
       </div>
-      <button type="button" onClick={openDeleteModal}>
-        Delete
-      </button>
-      <button type="button" onClick={openEditModal}>
-        Edit
-      </button>
+      <div className={css.btnWrapper}>
+        <button type="button" onClick={openDeleteModal}>
+          Delete
+        </button>
+        <button type="button" onClick={openEditModal}>
+          Edit
+        </button>
+      </div>
       <ContactModal
         initialName={name}
         initialNumber={number}

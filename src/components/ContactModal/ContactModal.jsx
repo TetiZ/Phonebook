@@ -4,6 +4,7 @@ import { updateContact } from "../../redux/contacts/operations";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import css from "../ContactForm/ContactForm.module.css";
+import modalCss from "./ContactModal.module.css";
 
 Modal.setAppElement("#root");
 
@@ -44,6 +45,8 @@ export default function ContactModal({
 
   return (
     <Modal
+      className={modalCss.content}
+      overlayClassName={modalCss.overlay}
       isOpen={isOpen}
       onRequestClose={closeModal}
       contentLabel="Edit Contact Modal"
@@ -80,12 +83,14 @@ export default function ContactModal({
             />
           </div>
 
-          <button className={css.btn} type="submit">
-            Save
-          </button>
-          <button className={css.btn} type="button" onClick={closeModal}>
-            Cancel
-          </button>
+          <div className={modalCss.btnWrapper}>
+            <button className={css.btn} type="submit">
+              Save
+            </button>
+            <button className={css.btn} type="button" onClick={closeModal}>
+              Cancel
+            </button>
+          </div>
         </Form>
       </Formik>
     </Modal>

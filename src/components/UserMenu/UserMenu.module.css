@@ -1,0 +1,13 @@
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  padding: 4px 8px;
+}
