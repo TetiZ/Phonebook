@@ -1,15 +1,11 @@
 import { FaPhone } from "react-icons/fa6";
 import { IoPersonSharp } from "react-icons/io5";
 import css from "./Contact.module.css";
-import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contacts/operations";
 import { useState } from "react";
 import ContactModal from "../ContactModal/ContactModal";
 import DeleteModal from "../DeleteModal/DeleteModal";
 
 export default function Contact({ contact: { id, name, number } }) {
-  const dispatch = useDispatch();
-
   const [isEditing, setIsEditing] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 

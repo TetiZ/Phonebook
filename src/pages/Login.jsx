@@ -9,7 +9,7 @@ export default function Login() {
       <LoginForm />
 
       <p>
-        New to our platform? <NavLink to="./registration">Sign up now!</NavLink>
+        New to our platform? <NavLink to="/registration">Sign up now!</NavLink>
       </p>
     </div>
   );
