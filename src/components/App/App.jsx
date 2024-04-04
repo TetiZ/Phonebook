@@ -6,7 +6,7 @@ import { Routes, Route } from "react-router-dom";
 const HomePage = lazy(() => import("../../pages/Home"));
 const LoginPage = lazy(() => import("../../pages/Login"));
 const RegisterPage = lazy(() => import("../../pages/Register"));
-const PhonebookPage = lazy(() => import("../../pages/Phonebook"));
+const ContactsPage = lazy(() => import("../../pages/Contacts"));
 
 import { refreshUser } from "../../redux/auth/operations";
 import Layout from "../Layout/Layout";
@@ -38,8 +38,8 @@ export default function App() {
               element={<RestrictedRoute component={<RegisterPage />} />}
             />
             <Route
-              path="/phonebook"
-              element={<PrivateRoute component={<PhonebookPage />} />}
+              path="/contacts"
+              element={<PrivateRoute component={<ContactsPage />} />}
             />
           </Routes>
         </Suspense>

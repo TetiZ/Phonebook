@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { fetchContacts } from "../redux/contacts/operations";
 
-export default function Phonebook() {
+export default function Contacts() {
   const loading = useSelector((state) => state.contacts.loading);
   const error = useSelector((state) => state.contacts.error);
 

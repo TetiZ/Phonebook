@@ -5,5 +5,5 @@ import { Navigate } from "react-router-dom";
 export default function RestrictedRoute({ component: Component }) {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  return isLoggedIn ? <Navigate to="/phonebook" /> : Component;
+  return isLoggedIn ? <Navigate to="/contacts" /> : Component;
 }
