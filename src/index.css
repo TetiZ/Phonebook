@@ -1,9 +1,21 @@
+@import url(./fonts.css);
+
+body {
+  /* Box model */
+
+  /* Typography */
+  color: #826f8c;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.61;
+
+  /* Visual */
+  background-color: #ffe6d7;
+}
+
 a {
   text-decoration: inherit;
-}
-body {
-  padding: 15px;
-  color: #1b1b1b;
 }
 
 ul,
@@ -15,4 +27,13 @@ li {
 img {
   display: block;
   width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
 }

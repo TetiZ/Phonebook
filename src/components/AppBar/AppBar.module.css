@@ -1,6 +1,10 @@
 .header {
+  /* Box model */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  padding: 10px 135px 0;
+
+  /* Typography */
+  color: #446381;
 }
