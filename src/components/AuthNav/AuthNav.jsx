@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
-import css from "./AuthNav.module.css";
+import style from "../App/App.module.css";
 import clsx from "clsx";
 
 export default function AuthNavigation() {
   const linkClass = ({ isActive }) => {
-    return clsx(css.link, isActive && css.active);
+    return clsx(style.link, isActive && style.active);
   };
   return (
     <nav>

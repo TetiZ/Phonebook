@@ -4,14 +4,14 @@ import { register } from "../../redux/auth/operations";
 import { useId, useState } from "react";
 import * as Yup from "yup";
 import css from "./RegistrationForm.module.css";
-import style from "../../pages/Home.module.css";
+import style from "../App/App.module.css";
 import { TextField, InputAdornment, IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 const userCredentialsValidationSchema = Yup.object().shape({
   name: Yup.string()
-    .min(3, "Too short!")
-    .max(50, "Too long!")
+    .min(3, "Name is too short!")
+    .max(50, "Name is too long!")
     .required("Required field"),
   email: Yup.string().email("Invalid email format").required("Required field"),
 
@@ -56,7 +56,6 @@ export default function RegistrationForm() {
       <Form className={css.formWrapper}>
         <div className={css.thumb}>
           <Field
-            className={css.input}
             as={TextField}
             variant="outlined"
             name="name"
@@ -64,12 +63,15 @@ export default function RegistrationForm() {
             required
             label="Name"
           ></Field>
-          <ErrorMessage component="span" name="name"></ErrorMessage>
+          <ErrorMessage
+            component="span"
+            name="name"
+            className={style.error}
+          ></ErrorMessage>
         </div>
 
         <div className={css.thumb}>
           <Field
-            className={css.input}
             as={TextField}
             variant="outlined"
             name="email"
@@ -78,12 +80,15 @@ export default function RegistrationForm() {
             required
             label="E-mail"
           ></Field>
-          <ErrorMessage component="span" name="email"></ErrorMessage>
+          <ErrorMessage
+            component="span"
+            name="email"
+            className={style.error}
+          ></ErrorMessage>
         </div>
 
         <div className={css.thumb}>
           <Field
-            className={css.input}
             as={TextField}
             variant="outlined"
             name="password"
@@ -106,7 +111,11 @@ export default function RegistrationForm() {
               ),
             }}
           ></Field>
-          <ErrorMessage component="span" name="password"></ErrorMessage>
+          <ErrorMessage
+            component="span"
+            name="password"
+            className={style.error}
+          ></ErrorMessage>
         </div>
 
         <button type="submit" className={style.btn}>

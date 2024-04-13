@@ -2,15 +2,15 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useId } from "react";
 import * as Yup from "yup";
 import css from "./ContactForm.module.css";
-import style from "../../pages/Home.module.css";
+import style from "../App/App.module.css";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
 import { TextField } from "@mui/material";
 
 const contactFormValidationSchema = Yup.object().shape({
   name: Yup.string()
-    .min(3, "Too short!")
-    .max(50, "Too long!")
+    .min(3, "Name is too short!")
+    .max(50, "Name is too long!")
     .required("Required field"),
 
   number: Yup.string()
@@ -18,7 +18,7 @@ const contactFormValidationSchema = Yup.object().shape({
       message: "Invalid phone number format, use XXX-XX-XX",
       excludeEmptyString: true,
     })
-    .required("Required"),
+    .required("Required field"),
 });
 
 export default function ContactForm() {
@@ -49,7 +49,6 @@ export default function ContactForm() {
       <Form className={css.form}>
         <div>
           <Field
-            className={css.input}
             name="name"
             id={userName}
             as={TextField}
@@ -58,7 +57,7 @@ export default function ContactForm() {
             label="Name"
           ></Field>
           <ErrorMessage
-            className={css.error}
+            className={style.error}
             component="span"
             name="name"
           ></ErrorMessage>
@@ -66,7 +65,6 @@ export default function ContactForm() {
 
         <div>
           <Field
-            className={css.input}
             name="number"
             id={userPhoneNumber}
             type="tel"
@@ -78,7 +76,7 @@ export default function ContactForm() {
             label="Number"
           ></Field>
           <ErrorMessage
-            className={css.error}
+            className={style.error}
             component="span"
             name="number"
           ></ErrorMessage>

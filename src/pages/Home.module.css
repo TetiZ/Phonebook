@@ -47,19 +47,6 @@
   margin-bottom: 36px;
 }
 
-.btn {
-  /* Box model */
-  padding: 13px 31px;
-  /* Typography */
-  color: #fff;
-  text-align: center;
-  line-height: 1.33;
-  /* Visual */
-  border-radius: 25px;
-  border: 1px solid #000;
-  background: linear-gradient(93deg, #4499d9 11.62%, #6e6cc1 75.39%);
-}
-
 .imgWrapper {
   display: flex;
   flex-shrink: 0;

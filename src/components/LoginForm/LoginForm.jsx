@@ -5,7 +5,7 @@ import { useId, useState } from "react";
 import * as Yup from "yup";
 import { TextField, InputAdornment, IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import style from "../../pages/Home.module.css";
+import style from "../App/App.module.css";
 
 const loginValidationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email format").required("Required field"),
