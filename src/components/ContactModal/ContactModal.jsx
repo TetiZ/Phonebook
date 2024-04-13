@@ -3,8 +3,13 @@ import { useDispatch } from "react-redux";
 import { updateContact } from "../../redux/contacts/operations";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+
 import css from "../ContactForm/ContactForm.module.css";
 import modalCss from "./ContactModal.module.css";
+import style from "../App/App.module.css";
+
+import { IoIosContact } from "react-icons/io";
+import { GiRotaryPhone } from "react-icons/gi";
 
 Modal.setAppElement("#root");
 
@@ -61,33 +66,49 @@ export default function ContactModal({
         onSubmit={submitHandler}
       >
         <Form className={css.form}>
-          <div>
-            <label htmlFor="name">Name</label>
-            <Field className={css.input} name="name" />
-            <ErrorMessage className={css.error} component="span" name="name" />
+          <div className={css.inputWrapper}>
+            <label htmlFor="name" className={css.label}>
+              Name
+            </label>
+            <Field
+              className={css.input}
+              name="name"
+              placeholder="Name"
+              required
+            />
+            <IoIosContact className={css.icon} />
+            <ErrorMessage
+              className={style.error}
+              component="span"
+              name="name"
+            />
           </div>
 
-          <div>
-            <label htmlFor="number">Number</label>
+          <div className={css.inputWrapper}>
+            <label htmlFor="number" className={css.label}>
+              Phone
+            </label>
             <Field
               className={css.input}
               name="number"
               type="tel"
               pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"
               placeholder="XXX-XX-XX"
+              required
             />
+            <GiRotaryPhone className={css.icon} />
             <ErrorMessage
-              className={css.error}
+              className={style.error}
               component="span"
               name="number"
             />
           </div>
 
           <div className={modalCss.btnWrapper}>
-            <button className={css.btn} type="submit">
+            <button className={style.btn} type="submit">
               Save
             </button>
-            <button className={css.btn} type="button" onClick={closeModal}>
+            <button className={style.btn} type="button" onClick={closeModal}>
               Cancel
             </button>
           </div>

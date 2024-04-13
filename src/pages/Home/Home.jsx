@@ -1,19 +1,18 @@
-import Loader from "../components/Loader/Loader";
-import PageTitle from "../components/PageTitle/PageTitle";
+import Loader from "../../components/Loader/Loader";
+import PageTitle from "../../components/PageTitle/PageTitle";
 import css from "./Home.module.css";
-import style from "../components/App/App.module.css";
+import style from "../../components/App/App.module.css";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectIsLoggedIn } from "../redux/auth/selectors";
-import phoneImage from "../assets/img/phone.png";
-import dotsImage from "../assets/img/dots.png";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import phoneImage from "../../assets/img/phone.png";
+import dotsImage from "../../assets/img/dots.png";
 
 export default function Home() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <div>
-      <PageTitle></PageTitle>
-      <section className={css.section}>
+      <section className={style.section}>
         <div className={css.container}>
           <div className={css.intro}>
             <p className={css.text}>

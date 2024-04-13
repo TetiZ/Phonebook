@@ -31,5 +31,24 @@
   /* Visual */
   border-radius: 25px;
   border: 1px solid #000;
+  box-shadow: 0 1px 1px #00000024, 0 1px 3px #0000001f, 0 2px 1px #0003;
   background: linear-gradient(93deg, #4499d9 11.62%, #6e6cc1 75.39%);
+  /* Transition */
+  transition: transform 0.3s ease;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+  border-color: #fff;
+  transform: scale(1.1);
+}
+
+/* Section & container */
+.section {
+  background-image: url(../../assets/img/home-bg-desktop.png);
+  padding-top: 40px;
+  padding-bottom: 80px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

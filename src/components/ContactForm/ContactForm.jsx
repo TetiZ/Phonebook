@@ -1,11 +1,15 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useId } from "react";
 import * as Yup from "yup";
-import css from "./ContactForm.module.css";
-import style from "../App/App.module.css";
+
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
-import { TextField } from "@mui/material";
+
+import { IoIosContact } from "react-icons/io";
+import { GiRotaryPhone } from "react-icons/gi";
+
+import css from "./ContactForm.module.css";
+import style from "../App/App.module.css";
 
 const contactFormValidationSchema = Yup.object().shape({
   name: Yup.string()
@@ -38,54 +42,64 @@ export default function ContactForm() {
   };
 
   return (
-    <Formik
-      initialValues={{
-        name: "",
-        number: "",
-      }}
-      validationSchema={contactFormValidationSchema}
-      onSubmit={submitHandler}
-    >
-      <Form className={css.form}>
-        <div>
-          <Field
-            name="name"
-            id={userName}
-            as={TextField}
-            variant="outlined"
-            required
-            label="Name"
-          ></Field>
-          <ErrorMessage
-            className={style.error}
-            component="span"
-            name="name"
-          ></ErrorMessage>
-        </div>
+    <>
+      <p className={css.text}>Add new contact</p>
+      <Formik
+        initialValues={{
+          name: "",
+          number: "",
+        }}
+        validationSchema={contactFormValidationSchema}
+        onSubmit={submitHandler}
+      >
+        <Form className={css.form}>
+          <div className={css.inputWrapper}>
+            <label className={css.label} htmlFor={userName}>
+              Name
+            </label>
 
-        <div>
-          <Field
-            name="number"
-            id={userPhoneNumber}
-            type="tel"
-            pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"
-            placeholder="XXX-XX-XX"
-            as={TextField}
-            variant="outlined"
-            required
-            label="Number"
-          ></Field>
-          <ErrorMessage
-            className={style.error}
-            component="span"
-            name="number"
-          ></ErrorMessage>
-        </div>
+            <Field
+              className={css.input}
+              name="name"
+              id={userName}
+              placeholder="Name"
+              required
+            />
+            <IoIosContact className={css.icon} />
+            <ErrorMessage
+              className={style.error}
+              component="span"
+              name="name"
+            />
+          </div>
 
-        <button className={style.btn} type="submit">
-          Add contact
-        </button>
-      </Form>
-    </Formik>
+          <div className={css.inputWrapper}>
+            <label className={css.label} htmlFor={userPhoneNumber}>
+              Phone
+            </label>
+
+            <Field
+              className={css.input}
+              name="number"
+              id={userPhoneNumber}
+              type="tel"
+              pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"
+              placeholder="XXX-XX-XX"
+              required
+            />
+            <GiRotaryPhone className={css.icon} />
+            <ErrorMessage
+              className={style.error}
+              component="span"
+              name="number"
+            />
+          </div>
+
+          <button className={style.btn} type="submit">
+            Add contact
+          </button>
+        </Form>
+      </Formik>
+    </>
   );
 }

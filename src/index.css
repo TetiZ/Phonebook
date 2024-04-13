@@ -11,7 +11,7 @@ body {
   line-height: 1.61;
 
   /* Visual */
-  background-color: #ffe6d7;
+  background-color: #fbe9de;
 }
 
 a {
@@ -36,4 +36,12 @@ h4,
 p {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: rgb(68, 99, 129);
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
 }

@@ -7,12 +7,20 @@ export default function ContactList() {
   const filteredContacts = useSelector(selectFilteredContacts);
 
   return (
-    <ul className={css.list}>
-      {filteredContacts.map((contact) => (
-        <li className={css.listItem} key={contact.id}>
-          <Contact contact={contact} />
-        </li>
-      ))}
-    </ul>
+    <>
+      {filteredContacts.length > 0 ? (
+        <ul className={css.list}>
+          {filteredContacts.map((contact) => (
+            <li className={css.listItem} key={contact.id}>
+              <Contact contact={contact} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className={css.info}>
+          Your phonebook is empty. Please use the form to add new contacts.
+        </p>
+      )}
+    </>
   );
 }

@@ -1,5 +1,8 @@
-import { FaPhone } from "react-icons/fa6";
-import { IoPersonSharp } from "react-icons/io5";
+import { IoIosContact } from "react-icons/io";
+import { GiRotaryPhone } from "react-icons/gi";
+import { AiOutlineDelete } from "react-icons/ai";
+import { GrEdit } from "react-icons/gr";
+
 import css from "./Contact.module.css";
 import { useState } from "react";
 import ContactModal from "../ContactModal/ContactModal";
@@ -29,20 +32,20 @@ export default function Contact({ contact: { id, name, number } }) {
     <div className={css.contact}>
       <div>
         <p className={css.text}>
-          <IoPersonSharp className={css.icon} />
+          <IoIosContact className={css.contactIcon} />
           {name}
         </p>
         <p className={css.text}>
-          <FaPhone className={css.icon} />
+          <GiRotaryPhone className={css.contactIcon} />
           {number}
         </p>
       </div>
       <div className={css.btnWrapper}>
-        <button type="button" onClick={openDeleteModal}>
-          Delete
+        <button className={css.btn} type="button" onClick={openDeleteModal}>
+          <AiOutlineDelete className={css.icon} />
         </button>
-        <button type="button" onClick={openEditModal}>
-          Edit
+        <button className={css.btn} type="button" onClick={openEditModal}>
+          <GrEdit className={css.icon} />
         </button>
       </div>
       <ContactModal

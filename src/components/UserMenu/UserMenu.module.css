@@ -4,3 +4,9 @@
   align-items: center;
   gap: 16px;
 }
+
+.menu .avatar {
+  display: flex;
+  background-color: #4499d9;
+  border: 1px solid #000;
+}

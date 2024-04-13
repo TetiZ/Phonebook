@@ -1,5 +1,5 @@
-import PageTitle from "../components/PageTitle/PageTitle";
-import LoginForm from "../components/LoginForm/LoginForm";
+import PageTitle from "../../components/PageTitle/PageTitle";
+import LoginForm from "../../components/LoginForm/LoginForm";
 import { NavLink } from "react-router-dom";
 
 export default function Login() {

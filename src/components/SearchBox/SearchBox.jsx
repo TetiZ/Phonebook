@@ -9,9 +9,10 @@ export default function SearchBox() {
 
   return (
     <div className={css.wrapper}>
-      <p className={css.text}>Find contacts by name</p>
+      <p className={css.text}>Find contacts</p>
       <input
-        placeholder="Enter name to search contact"
+        className={css.input}
+        placeholder="Start typing the name..."
         type="text"
         value={filters}
         onChange={(e) => dispatch(changeFilter(e.target.value))}

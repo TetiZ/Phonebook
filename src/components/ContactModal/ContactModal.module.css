@@ -9,7 +9,8 @@
   overflow: auto;
   outline: none;
   padding: 15px;
-  background: #ffffff;
+  border-radius: 20px;
+  background: #fbe9de;
 }
 
 .overlay {
