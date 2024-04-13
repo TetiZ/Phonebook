@@ -12,13 +12,6 @@
   margin-top: 8px;
 }
 
-.btn {
-  display: block;
-  text-align: center;
-  margin: 0 auto;
-  padding: 4px 8px;
-}
-
 .error {
   color: red;
   font-size: 12px;

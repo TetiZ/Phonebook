@@ -2,8 +2,10 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useId } from "react";
 import * as Yup from "yup";
 import css from "./ContactForm.module.css";
+import style from "../../pages/Home.module.css";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
+import { TextField } from "@mui/material";
 
 const contactFormValidationSchema = Yup.object().shape({
   name: Yup.string()
@@ -46,8 +48,15 @@ export default function ContactForm() {
     >
       <Form className={css.form}>
         <div>
-          <label htmlFor={userName}>Name</label>
-          <Field className={css.input} name="name" id={userName}></Field>
+          <Field
+            className={css.input}
+            name="name"
+            id={userName}
+            as={TextField}
+            variant="outlined"
+            required
+            label="Name"
+          ></Field>
           <ErrorMessage
             className={css.error}
             component="span"
@@ -56,7 +65,6 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor={userPhoneNumber}>Number</label>
           <Field
             className={css.input}
             name="number"
@@ -64,6 +72,10 @@ export default function ContactForm() {
             type="tel"
             pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"
             placeholder="XXX-XX-XX"
+            as={TextField}
+            variant="outlined"
+            required
+            label="Number"
           ></Field>
           <ErrorMessage
             className={css.error}
@@ -72,7 +84,7 @@ export default function ContactForm() {
           ></ErrorMessage>
         </div>
 
-        <button className={css.btn} type="submit">
+        <button className={style.btn} type="submit">
           Add contact
         </button>
       </Form>

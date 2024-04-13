@@ -1,8 +1,12 @@
 import { ErrorMessage, Form, Formik, Field } from "formik";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
-import { useId } from "react";
+import { useId, useState } from "react";
 import * as Yup from "yup";
+import css from "./RegistrationForm.module.css";
+import style from "../../pages/Home.module.css";
+import { TextField, InputAdornment, IconButton } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 const userCredentialsValidationSchema = Yup.object().shape({
   name: Yup.string()
@@ -27,6 +31,12 @@ export default function RegistrationForm() {
   const userEmail = useId();
   const userPassword = useId();
 
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
   const dispatch = useDispatch();
   const registrationHandler = (values, action) => {
     dispatch(register(values));
@@ -43,26 +53,65 @@ export default function RegistrationForm() {
       validationSchema={userCredentialsValidationSchema}
       onSubmit={registrationHandler}
     >
-      <Form>
-        <div>
-          <label htmlFor={userName}>Name</label>
-          <Field name="name" id={userName}></Field>
+      <Form className={css.formWrapper}>
+        <div className={css.thumb}>
+          <Field
+            className={css.input}
+            as={TextField}
+            variant="outlined"
+            name="name"
+            id={userName}
+            required
+            label="Name"
+          ></Field>
           <ErrorMessage component="span" name="name"></ErrorMessage>
         </div>
 
-        <div>
-          <label htmlFor={userEmail}>Email</label>
-          <Field name="email" id={userEmail} type="email"></Field>
+        <div className={css.thumb}>
+          <Field
+            className={css.input}
+            as={TextField}
+            variant="outlined"
+            name="email"
+            id={userEmail}
+            type="email"
+            required
+            label="E-mail"
+          ></Field>
           <ErrorMessage component="span" name="email"></ErrorMessage>
         </div>
 
-        <div>
-          <label htmlFor={userPassword}>Password</label>
-          <Field name="password" id={userPassword} type="password"></Field>
+        <div className={css.thumb}>
+          <Field
+            className={css.input}
+            as={TextField}
+            variant="outlined"
+            name="password"
+            id={userPassword}
+            required
+            label="Password"
+            type={showPassword ? "text" : "password"}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          ></Field>
           <ErrorMessage component="span" name="password"></ErrorMessage>
         </div>
 
-        <button type="submit">Register</button>
+        <button type="submit" className={style.btn}>
+          Register
+        </button>
       </Form>
     </Formik>
   );
