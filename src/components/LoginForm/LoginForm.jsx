@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { TextField, InputAdornment, IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import style from "../App/App.module.css";
+import css from "./LoginForm.module.css";
 
 const loginValidationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email format").required("Required field"),
@@ -38,9 +39,10 @@ export default function LoginForm() {
       validationSchema={loginValidationSchema}
       onSubmit={loginHandler}
     >
-      <Form>
+      <Form className={css.form}>
         <div>
           <Field
+            className={css.field}
             as={TextField}
             variant="outlined"
             name="email"
@@ -54,6 +56,7 @@ export default function LoginForm() {
 
         <div>
           <Field
+            className={css.field}
             as={TextField}
             variant="outlined"
             name="password"

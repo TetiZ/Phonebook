@@ -8,6 +8,8 @@ import style from "../App/App.module.css";
 import { TextField, InputAdornment, IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
+import formStyle from "../LoginForm/LoginForm.module.css";
+
 const userCredentialsValidationSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, "Name is too short!")
@@ -53,9 +55,10 @@ export default function RegistrationForm() {
       validationSchema={userCredentialsValidationSchema}
       onSubmit={registrationHandler}
     >
-      <Form className={css.formWrapper}>
+      <Form className={formStyle.form}>
         <div className={css.thumb}>
           <Field
+            className={formStyle.field}
             as={TextField}
             variant="outlined"
             name="name"
@@ -72,6 +75,7 @@ export default function RegistrationForm() {
 
         <div className={css.thumb}>
           <Field
+            className={formStyle.field}
             as={TextField}
             variant="outlined"
             name="email"
@@ -89,6 +93,7 @@ export default function RegistrationForm() {
 
         <div className={css.thumb}>
           <Field
+            className={formStyle.field}
             as={TextField}
             variant="outlined"
             name="password"
