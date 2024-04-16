@@ -4,13 +4,6 @@ export const formStyle = {
   "& .MuiFormLabel-root": {
     color: "#ffffff",
     fontFamily: "inherit",
-    "&:hover, &:focus": { color: "#ffffff", fontFamily: "inherit" },
-  },
-  "& .MuiFormControl-root": {
-    "&:hover, &:focus": {
-      borderColor: "#ffffff",
-      boxShadow: "0 4px 4px rgba(0, 0, 0, 0.4)",
-    },
   },
   "& .MuiInputBase-root": {
     borderRadius: "20px",
