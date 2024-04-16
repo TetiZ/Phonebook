@@ -15,10 +15,12 @@ export const formStyle = {
     },
     "& .MuiOutlinedInput-notchedOutline": {
       border: "1px solid #ffffff",
+      "&:hover, &:focus": {
+        borderColor: "#ffffff",
+        boxShadow: "0 4px 4px rgba(0, 0, 0, 0.4)",
+      },
     },
-    "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#A56ED6",
-    },
+
     "& .MuiOutlinedInput-input::placeholder": {
       color: "rgba(255, 255, 255, 0.3)",
     },

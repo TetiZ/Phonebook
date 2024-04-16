@@ -45,3 +45,25 @@ input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px transparent inset;
   transition: background-color 5000s ease-in-out 0s;
 }
+
+button {
+  /* Box model */
+  padding: 13px 31px;
+  /* Typography */
+  color: #fff;
+  text-align: center;
+  line-height: 1.33;
+  /* Visual */
+  border-radius: 25px;
+  border: 1px solid #000;
+  box-shadow: 0 1px 1px #00000024, 0 1px 3px #0000001f, 0 2px 1px #0003;
+  background: linear-gradient(93deg, #4499d9 11.62%, #6e6cc1 75.39%);
+  /* Transition */
+  transition: transform 0.3s ease;
+}
+
+button:hover,
+button:focus {
+  border-color: #fff;
+  transform: scale(1.1);
+}

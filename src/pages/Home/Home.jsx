@@ -1,12 +1,13 @@
 import Loader from "../../components/Loader/Loader";
-import PageTitle from "../../components/PageTitle/PageTitle";
-import css from "./Home.module.css";
-import style from "../../components/App/App.module.css";
+
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import phoneImage from "../../assets/img/phone.png";
 import dotsImage from "../../assets/img/dots.png";
+
+import style from "../../components/App/App.module.css";
+import css from "./Home.module.css";
 
 export default function Home() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -30,11 +31,11 @@ export default function Home() {
               app will do the rest.
             </p>
             {isLoggedIn ? (
-              <NavLink to="/contacts" className={style.btn}>
+              <NavLink to="/contacts" className={css.btn}>
                 Get Started Now
               </NavLink>
             ) : (
-              <NavLink to="/login" className={style.btn}>
+              <NavLink to="/login" className={css.btn}>
                 Get Started Now
               </NavLink>
             )}
