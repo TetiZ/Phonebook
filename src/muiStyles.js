@@ -1,6 +1,7 @@
 export const formStyle = {
   "& .MuiFormLabel-root": {
     color: "#ffffff",
+    fontFamily: "inherit",
   },
   "& .MuiInputBase-root": {
     borderRadius: "20px",
