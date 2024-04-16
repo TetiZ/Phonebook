@@ -5,8 +5,9 @@ import { useId, useState } from "react";
 import * as Yup from "yup";
 import { TextField, InputAdornment, IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import style from "../App/App.module.css";
+
 import css from "./LoginForm.module.css";
+import { formStyle } from "../../muiStyles";
 
 const loginValidationSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email format").required("Required field"),
@@ -42,28 +43,34 @@ export default function LoginForm() {
       <Form className={css.form}>
         <div>
           <Field
-            className={css.field}
-            as={TextField}
-            variant="outlined"
             name="email"
             id={userEmail}
+            label="E-mail"
             type="email"
             required
-            label="E-mail"
+            as={TextField}
+            variant="outlined"
+            sx={formStyle}
+            fullWidth
           ></Field>
-          <ErrorMessage component="span" name="email"></ErrorMessage>
+          <ErrorMessage
+            component="span"
+            name="email"
+            className={css.error}
+          ></ErrorMessage>
         </div>
 
         <div>
           <Field
-            className={css.field}
-            as={TextField}
-            variant="outlined"
             name="password"
             id={userPassword}
-            required
             label="Password"
             type={showPassword ? "text" : "password"}
+            required
+            as={TextField}
+            variant="outlined"
+            sx={formStyle}
+            fullWidth
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -79,12 +86,14 @@ export default function LoginForm() {
               ),
             }}
           ></Field>
-          <ErrorMessage component="span" name="password"></ErrorMessage>
+          <ErrorMessage
+            component="span"
+            name="password"
+            className={css.error}
+          ></ErrorMessage>
         </div>
 
-        <button type="submit" className={style.btn}>
-          Log In
-        </button>
+        <button type="submit">Log In</button>
       </Form>
     </Formik>
   );

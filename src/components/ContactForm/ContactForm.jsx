@@ -9,7 +9,6 @@ import { IoIosContact } from "react-icons/io";
 import { GiRotaryPhone } from "react-icons/gi";
 
 import css from "./ContactForm.module.css";
-import style from "../App/App.module.css";
 
 const contactFormValidationSchema = Yup.object().shape({
   name: Yup.string()
@@ -66,11 +65,7 @@ export default function ContactForm() {
               required
             />
             <IoIosContact className={css.icon} />
-            <ErrorMessage
-              className={style.error}
-              component="span"
-              name="name"
-            />
+            <ErrorMessage className={css.error} component="span" name="name" />
           </div>
 
           <div className={css.inputWrapper}>
@@ -89,15 +84,13 @@ export default function ContactForm() {
             />
             <GiRotaryPhone className={css.icon} />
             <ErrorMessage
-              className={style.error}
+              className={css.error}
               component="span"
               name="number"
             />
           </div>
 
-          <button className={style.btn} type="submit">
-            Add contact
-          </button>
+          <button type="submit">Add contact</button>
         </Form>
       </Formik>
     </>

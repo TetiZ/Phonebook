@@ -3,12 +3,12 @@ import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import { useId, useState } from "react";
 import * as Yup from "yup";
-import css from "./RegistrationForm.module.css";
-import style from "../App/App.module.css";
+
 import { TextField, InputAdornment, IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
-import formStyle from "../LoginForm/LoginForm.module.css";
+import css from "../LoginForm/LoginForm.module.css";
+import { formStyle } from "../../muiStyles";
 
 const userCredentialsValidationSchema = Yup.object().shape({
   name: Yup.string()
@@ -55,52 +55,57 @@ export default function RegistrationForm() {
       validationSchema={userCredentialsValidationSchema}
       onSubmit={registrationHandler}
     >
-      <Form className={formStyle.form}>
-        <div className={css.thumb}>
+      <Form className={css.form}>
+        <div>
           <Field
-            className={formStyle.field}
-            as={TextField}
-            variant="outlined"
             name="name"
             id={userName}
-            required
             label="Name"
-          ></Field>
-          <ErrorMessage
-            component="span"
-            name="name"
-            className={style.error}
-          ></ErrorMessage>
-        </div>
-
-        <div className={css.thumb}>
-          <Field
-            className={formStyle.field}
+            required
             as={TextField}
             variant="outlined"
+            sx={formStyle}
+            fullWidth
+          ></Field>
+          {
+            <ErrorMessage
+              component="span"
+              name="name"
+              className={css.error}
+            ></ErrorMessage>
+          }
+        </div>
+
+        <div>
+          <Field
             name="email"
             id={userEmail}
+            label="E-mail"
             type="email"
             required
-            label="E-mail"
+            as={TextField}
+            variant="outlined"
+            sx={formStyle}
+            fullWidth
           ></Field>
           <ErrorMessage
             component="span"
             name="email"
-            className={style.error}
+            className={css.error}
           ></ErrorMessage>
         </div>
 
-        <div className={css.thumb}>
+        <div>
           <Field
-            className={formStyle.field}
-            as={TextField}
-            variant="outlined"
             name="password"
             id={userPassword}
-            required
             label="Password"
             type={showPassword ? "text" : "password"}
+            required
+            as={TextField}
+            variant="outlined"
+            sx={formStyle}
+            fullWidth
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -119,13 +124,11 @@ export default function RegistrationForm() {
           <ErrorMessage
             component="span"
             name="password"
-            className={style.error}
+            className={css.error}
           ></ErrorMessage>
         </div>
 
-        <button type="submit" className={style.btn}>
-          Register
-        </button>
+        <button type="submit">Register</button>
       </Form>
     </Formik>
   );

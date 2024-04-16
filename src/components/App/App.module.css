@@ -13,15 +13,16 @@
   text-decoration: underline;
 }
 
-/* Common - forms */
-
-.error {
-  color: red;
-  font-size: 12px;
+/* Section & container */
+.section {
+  background-image: url(../../assets/img/home-bg-desktop.png);
+  padding-top: 40px;
+  padding-bottom: 80px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-/* Common - btns */
-.btn {
+button {
   /* Box model */
   padding: 13px 31px;
   /* Typography */
@@ -37,18 +38,8 @@
   transition: transform 0.3s ease;
 }
 
-.btn:hover,
-.btn:focus,
-.btn:active {
+button:hover,
+button:focus {
   border-color: #fff;
   transform: scale(1.1);
-}
-
-/* Section & container */
-.section {
-  background-image: url(../../assets/img/home-bg-desktop.png);
-  padding-top: 40px;
-  padding-bottom: 80px;
-  background-repeat: no-repeat;
-  background-size: cover;
 }

@@ -35,7 +35,7 @@
 .input {
   width: 100%;
   background-color: transparent;
-  color: white;
+  color: #ffffff;
   border: 1px solid white;
   outline: none;
   border-radius: 20px;
@@ -56,4 +56,9 @@
 .label {
   color: white;
   text-align: start;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
 }
